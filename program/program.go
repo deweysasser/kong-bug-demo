@@ -16,9 +16,19 @@ type Options struct {
 	Version bool `help:"Show program version"`
 	// VersionCmd VersionCmd `name:"version" cmd:"" help:"show program version"`
 
-	Debug        bool   `group:"Info" help:"Show debugging information"`
-	OutputFormat string `group:"Info" enum:"auto,jsonl,terminal" default:"auto" help:"How to show program output (auto|terminal|jsonl)"`
-	Quiet        bool   `group:"Info" help:"Be less verbose than usual"`
+	Debug        bool        `group:"Info" help:"Show debugging information"`
+	OutputFormat string      `group:"Info" enum:"auto,jsonl,terminal" default:"auto" help:"How to show program output (auto|terminal|jsonl)"`
+	Quiet        bool        `group:"Info" help:"Be less verbose than usual"`
+	Cmd1         Subcommand1 `cmd:""`
+	Cmd2         Subcommand2 `cmd:""`
+}
+
+type Subcommand1 struct {
+	Dir1 string `group:"dir" help:"get a directory" type:"existingdir" default:"dir1"`
+}
+
+type Subcommand2 struct {
+	Dir2 string `group:"dir" help:"get a directory" type:"existingdir" default:"dir2"`
 }
 
 // Parse calls the CLI parsing routines
